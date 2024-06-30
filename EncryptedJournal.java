@@ -95,13 +95,16 @@ public class EncryptedJournal extends JFrame {
             }
 
             JOptionPane.showMessageDialog(this, "Text encrypted and saved successfully to " + fileName);
-            initializeUI(); // Return to the journal window
+
+            // Clear the text area after encryption and saving
+            textArea.setText("");
+
         } catch (NumberFormatException | IOException | IllegalBlockSizeException | BadPaddingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error encrypting and saving text");
-            initializeUI();
         }
     }
+
 
     private void openDecryptedTextWindow(String decryptedText) {
         JFrame decryptedTextFrame = new JFrame("Decrypted Text");
